@@ -15,6 +15,11 @@ On 2026-04-04, Anthropic added server-side validation that rejects OAuth request
 
 ## Install
 ```bash
+curl -fsSL https://raw.githubusercontent.com/kristianvastveit/hermes-claude-auth/main/install-remote.sh | bash
+```
+
+Or clone manually:
+```bash
 git clone https://github.com/kristianvastveit/hermes-claude-auth.git
 cd hermes-claude-auth
 ./install.sh
