@@ -21,9 +21,13 @@ from __future__ import annotations
 import os
 import sys
 
+_HERMES_HOME = os.environ.get(
+    "HERMES_HOME",
+    os.path.expanduser("~/.hermes"),
+)
 _PATCHES_DIR = os.environ.get(
     "HERMES_PATCHES_DIR",
-    os.path.expanduser("~/.hermes/patches"),
+    os.path.join(_HERMES_HOME, "patches"),
 )
 _TARGET_MODULE = "agent.anthropic_adapter"
 

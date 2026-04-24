@@ -7,8 +7,9 @@ YELLOW='\033[1;33m'
 RESET='\033[0m'
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-HERMES_AGENT_DIR="$HOME/.hermes/hermes-agent"
-PATCHES_DIR="$HOME/.hermes/patches"
+HERMES_HOME="${HERMES_HOME:-$HOME/.hermes}"
+HERMES_AGENT_DIR="$HERMES_HOME/hermes-agent"
+PATCHES_DIR="$HERMES_HOME/patches"
 MARKER="# hermes-claude-auth managed"
 
 if [ ! -d "$HERMES_AGENT_DIR" ]; then

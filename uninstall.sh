@@ -24,13 +24,14 @@ for arg in "$@"; do
   esac
 done
 
+HERMES_HOME="${HERMES_HOME:-$HOME/.hermes}"
 VENV_DIR=""
 if [ -n "${HERMES_VENV:-}" ] && [ -d "${HERMES_VENV:-}" ]; then
   VENV_DIR="$HERMES_VENV"
-elif [ -d "$HOME/.hermes/hermes-agent/venv" ]; then
-  VENV_DIR="$HOME/.hermes/hermes-agent/venv"
-elif [ -d "$HOME/.hermes/hermes-agent/.venv" ]; then
-  VENV_DIR="$HOME/.hermes/hermes-agent/.venv"
+elif [ -d "$HERMES_HOME/hermes-agent/venv" ]; then
+  VENV_DIR="$HERMES_HOME/hermes-agent/venv"
+elif [ -d "$HERMES_HOME/hermes-agent/.venv" ]; then
+  VENV_DIR="$HERMES_HOME/hermes-agent/.venv"
 fi
 
 removed_hook=0
@@ -72,12 +73,12 @@ else
 fi
 
 if [ "$PURGE" -eq 1 ]; then
-  PATCH_DIR="$HOME/.hermes/patches"
+  PATCH_DIR="$HERMES_HOME/patches"
   PATCH_FILE="$PATCH_DIR/anthropic_billing_bypass.py"
 
   if [ -e "$PATCH_FILE" ]; then
     rm -f "$PATCH_FILE"
-    printf '%b[✓]%b Removed patch from ~/.hermes/patches/\n' "$GREEN" "$RESET"
+    printf '%b[✓]%b Removed patch from %s/patches/\n' "$GREEN" "$RESET" "$HERMES_HOME"
     removed_patch=1
   fi
 
